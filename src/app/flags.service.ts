@@ -1,26 +1,20 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class FlagsService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-
-  getAllCountry(){
-    return this.http.get('https://restcountries.eu/rest/v2/all');
+  public getAllCountry(): Observable<any[]> {
+    return this.http.get<any[]>(
+      "https://restcountries.com/v3.1/all?fields=name,flags"
+    );
   }
 
-  getCountryByName(name: string){
-    return this.http.get(`https://restcountries.eu/rest/v2/name/${name}`);
+  getCountryByName(name: string) {
+    return this.http.get(`https://restcountries.com/v3.1/name/${name}`);
   }
-
-
-
 }
-
-
-
