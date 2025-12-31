@@ -72,18 +72,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "countryFlags:build"
+            "buildTarget": "countryFlags:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "countryFlags:build:production"
+              "buildTarget": "countryFlags:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "countryFlags:build"
+            "buildTarget": "countryFlags:build"
           }
         },
         "test": {
