@@ -1,21 +1,25 @@
 
-  <div class="container mt-5">
-    <h1 class="text-center">Country Flags</h1>
-    <div class="col-md-8 m-auto">
-        <div class="form-group mt-2">
-            <!-- <form> -->
-              <select class="form-control" (change)="selectCountry($event)">
-                  <option [value]="" disabled selected>Select Country</option>
-                  <option *ngFor="let country of countries" [value]='country.name'>{{country.name}}</option>
-              </select>
-            <!-- </form> -->
-        </div>
-    </div>
-
-    <div class="container card mt-5 shadow-lg p-3 mb-5 bg-white rounded" *ngIf="selectedCountry">
-      <h1 class="text-center info">{{selectedCountry.name}} | {{selectedCountry.capital}} | {{selectedCountry.region}}</h1>
-      <img [src]="selectedCountry.flag" class="img-fluid">
-    </div>
+<div class="container mt-5">
+  <h1 class="text-center">Country Flags</h1>
+  <div class="col-md-8 m-auto">
+    <div class="form-group mt-2">
+      <!-- <form> -->
+      <select class="form-control" (change)="selectCountry($event)">
+        <option [value]="" disabled selected>Select Country</option>
+        @for (country of countries; track country) {
+          <option [value]='country.name'>{{country.name}}</option>
+        }
+      </select>
+    <!-- </form> -->
   </div>
+</div>
 
-    
+@if (selectedCountry) {
+  <div class="container card mt-5 shadow-lg p-3 mb-5 bg-white rounded">
+    <h1 class="text-center info">{{selectedCountry.name}} | {{selectedCountry.capital}} | {{selectedCountry.region}}</h1>
+    <img [src]="selectedCountry.flag" class="img-fluid">
+  </div>
+}
+</div>
+
+
